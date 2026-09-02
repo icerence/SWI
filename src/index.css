@@ -100,6 +100,7 @@
     background: var(--color-surface-neutral);
     font-family: var(--font-sans);
     overflow-x: hidden;
+    scroll-snap-type: y proximity;
   }
 
   body {
@@ -132,9 +133,13 @@
 }
 
 .portfolio-section {
+  --page-scale: min(calc(100vw / 1920), calc(100vh / 1080));
   width: 1920px;
+  height: calc(1080px / var(--page-scale));
   margin-inline: auto;
   scroll-margin-top: 0;
+  scroll-snap-align: start;
+  zoom: var(--page-scale);
 }
 
 .hero-profile-frame {
@@ -172,16 +177,10 @@
   transform: translateY(0);
 }
 
-@media (max-width: 1919px) {
-  .portfolio-section {
-    margin-inline: 0;
-    zoom: calc(100vw / 1920px);
-  }
-}
-
 @media (max-width: 767px) {
   .portfolio-section {
-    scroll-snap-align: none;
+    --page-scale: calc(100vw / 1920);
+    margin-inline: 0;
   }
 
   body {
