@@ -1,0 +1,64 @@
+export const sectionItems = [
+  { id: 'hero', label: 'Hero' },
+  { id: 'about', label: 'About' },
+  { id: 'work', label: 'Selected Work' },
+  { id: 'services', label: 'Services' },
+  { id: 'contact', label: 'Contact' },
+];
+
+export const profileGroups = [
+  {
+    title: '인적사항',
+    items: [
+      { term: '이   름 : 송원일' },
+      { term: '나   이 : 1986.08.16' },
+      { term: '거주지 : 서울시 은평구' },
+      { term: '휴대폰 : 010.6332.1694' },
+      { term: '이메일 : icerence@gmail.com' },
+    ],
+  },
+  {
+    title: '학력 및 자격',
+    items: [
+      { term: '05.03 ~ 13.02', description: '경북대학교 상주캠퍼스 전자공학과 졸업' },
+      { term: '취득', description: '1종 보통 운전면허증' },
+    ],
+  },
+  {
+    title: '경력',
+    items: [
+      { term: '24.07 ~ 25.06', description: '반다이남코코리아 영업부 할인점팀 근무' },
+      { term: '18.11 ~ 24.06', description: '유원커리어센터 (반다이남코코리아) 영업팀 도급사원 근무' },
+      { term: '17.07 ~ 18.01', description: '자이온전자 영업팀 대리 근무' },
+      { term: '14.04 ~ 17.06', description: '그린칩스 영업팀 사원 근무' },
+    ],
+  },
+  {
+    title: '인턴 및 대외활동',
+    items: [
+      { term: '22.05 ~ 26.08', description: '개인 프라모델 공방(작업실) 운영중' },
+      { term: '11.03 ~ 12.12', description: '대학내 동아리 탈출구 운영 (POP 예쁜글씨쓰기 및 공모전)' },
+    ],
+  },
+];
+
+export const projectMetadata = [
+  { label: '기술 스택', value: 'HTML, CSS, JavaScript' },
+  { label: '배포 매체', value: 'Desktop, Tablet, Mobile' },
+  { label: '작업 기간', value: '4주' },
+  { label: '본인 기여도', value: '팀장 (20%)' },
+  { label: '브라우저 호환성', value: 'Chrome, Edge' },
+  { label: '페이지 수', value: '메인페이지 1, 서브페이지 8' },
+];
+
+export const serviceCards = [
+  { number: '01', title: 'FRONTEND\nDEVELOPEMNT', items: ['+ WordPress', '+ Python', '+ PHP & Laravel'] },
+  { number: '02', title: 'BACKEND\nDEVELOPEMNT', items: ['+ WordPress', '+ Python', '+ PHP & Laravel'] },
+  { number: '03', title: 'ANDROID\nDEVELOPEMNT', items: ['+ WordPress', '+ Python', '+ PHP & Laravel'] },
+];
+
+export const visibleSectionItems = sectionItems.filter((item) => {
+  if (item.id === 'work') return projectMetadata.length > 0;
+  if (item.id === 'services') return serviceCards.length > 0;
+  return true;
+});
