@@ -1,5 +1,5 @@
-import { Header, SectionPagination, SectionWatermark } from '../components/index.js';
-import { projectMetadata, visibleSectionItems as sectionItems } from '../data/portfolioData.js';
+import { SectionWatermark } from '../components/index.js';
+import { projectMetadata } from '../data/portfolioData.js';
 import { A11y, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -10,12 +10,10 @@ export default function WorkSection({ onMenuClick, onNavigate }) {
 
   return (
     <section id="work" tabIndex="-1" className="portfolio-section relative h-[1080px] overflow-hidden bg-surface-white outline-none" aria-labelledby="work-title">
-      <Header onMenuClick={onMenuClick} className="absolute left-0 top-0 z-10 h-[95px] w-full pr-[50px]" />
-      <SectionPagination section="work" items={sectionItems} onNavigate={onNavigate} className="absolute left-[50px] top-[378px] z-10" />
-      <p className="absolute left-[312px] top-[60px] text-action font-medium">SELECTED<br />PROJECT</p>
+      <p className="section-reveal absolute left-[312px] top-[60px] text-action font-medium">SELECTED<br />PROJECT</p>
       <h2 id="work-title" className="sr-only">Selected Work</h2>
-      <Swiper className="h-full w-full" modules={[Navigation, A11y]} navigation={{ prevEl: '.work-prev', nextEl: '.work-next' }} slidesPerView={1} a11y={{ enabled: true }}>
-        <SwiperSlide>
+      <Swiper className="section-reveal section-reveal--delay-2 h-full w-full" modules={[Navigation, A11y]} navigation={{ prevEl: '.work-prev', nextEl: '.work-next' }} slidesPerView={1} a11y={{ enabled: true }}>
+        <SwiperSlide className="section-reveal-group">
           <div className="absolute left-[592px] top-[195px] h-[633px] w-[470px] bg-accent-teal" />
           <div className="absolute left-[593px] top-[195px] h-[633px] w-[469px] rotate-[15deg] overflow-hidden border border-black/10">
             <img className="h-[198%] w-full object-cover object-top" src="/assets/images/work-project-thumbnail.png" alt="풀무원 홈페이지 리디자인" loading="lazy" />
@@ -31,7 +29,7 @@ export default function WorkSection({ onMenuClick, onNavigate }) {
           </article>
         </SwiperSlide>
       </Swiper>
-      <div className="absolute left-[372px] top-[498px] z-10 flex w-[906px] justify-between text-body">
+      <div className="section-reveal section-reveal--delay-3 absolute left-[372px] top-[498px] z-10 flex w-[906px] justify-between text-body">
         <button className="work-prev" type="button">PREV ─────</button>
         <button className="work-next" type="button">───── NEXT</button>
       </div>

@@ -8,10 +8,12 @@ const paginationAssets = {
 
 export default function SectionPagination({ section, items, onNavigate, className = '' }) {
   const asset = paginationAssets[section];
+  const activeIndex = items?.findIndex((item) => item.id === section) ?? 0;
 
   return (
-    <nav className={`absolute h-pagination-height w-pagination-width ${className}`} aria-label="섹션 탐색">
-      <img className="h-full w-full" src={asset} alt="" aria-hidden="true" />
+    <nav className={`section-pagination absolute h-pagination-height w-pagination-width ${className}`} aria-label="섹션 탐색">
+      <img className="section-pagination__asset h-full w-full" src={asset} alt="" aria-hidden="true" />
+      <span className={`section-pagination__active section-pagination__active--${activeIndex}`} aria-hidden="true" />
       <div className="absolute inset-0 grid grid-rows-5">
         {items?.map((item) => (
           <button

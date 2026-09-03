@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react';
-import { InlineError, LoadingIndicator, MenuOverlay } from './components/index.js';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Header, InlineError, LoadingIndicator, MenuOverlay, SectionPagination } from './components/index.js';
 import { visibleSectionItems } from './data/portfolioData.js';
 import useAssetPreloader from './hooks/useAssetPreloader.js';
 import useSectionNavigation from './hooks/useSectionNavigation.js';
@@ -9,23 +9,66 @@ import HeroSection from './sections/HeroSection.jsx';
 import ServicesSection from './sections/ServicesSection.jsx';
 import WorkSection from './sections/WorkSection.jsx';
 import ContactForm from "./ContactForm";
+import { A11y, EffectFade, Keyboard, Mousewheel } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
 
 
 function PortfolioApp() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { activeSection, navigate } = useSectionNavigation();
+  const [isDesktop, setIsDesktop] = useState(() => window.matchMedia('(min-width: 1301px)').matches);
+  const screenSliderRef = useRef(null);
+  const { activeSection, navigate, registerSlider, handleSlideChange } = useSectionNavigation();
   const openMenu = useCallback(() => setMenuOpen(true), []);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1301px)');
+    const update = () => setIsDesktop(media.matches);
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (isDesktop && screenSliderRef.current) {
+      screenSliderRef.current.enable();
+      registerSlider(screenSliderRef.current);
+    } else if (!isDesktop) {
+      registerSlider(null);
+    }
+  }, [isDesktop, registerSlider]);
 
   return (
     <>
       <a className="skip-link" href="#hero">본문으로 건너뛰기</a>
       <main id="main-content" className="w-full overflow-x-clip bg-surface-neutral" data-active-section={activeSection}>
-        <HeroSection onMenuClick={openMenu} onNavigate={navigate} />
-        <AboutSection onMenuClick={openMenu} onNavigate={navigate} />
-        <WorkSection onMenuClick={openMenu} onNavigate={navigate} />
-        <ServicesSection onMenuClick={openMenu} onNavigate={navigate} />
-        <ContactSection onMenuClick={openMenu} onNavigate={navigate} />
+        <div className="portfolio-fixed-chrome">
+          <Header onMenuClick={openMenu} className="absolute left-0 top-0 h-[95px] w-full pr-[50px]" />
+          <SectionPagination section={activeSection} items={visibleSectionItems} onNavigate={navigate} className="absolute left-[50px] top-[378px]" />
+        </div>
+        <Swiper
+          className="portfolio-screen-slider"
+          modules={[A11y, EffectFade, Keyboard, Mousewheel]}
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          speed={650}
+          preventInteractionOnTransition={false}
+          mousewheel={{ thresholdDelta: 0, thresholdTime: 0, sensitivity: 1 }}
+          keyboard={{ enabled: true }}
+          enabled={isDesktop}
+          onSwiper={(slider) => {
+            screenSliderRef.current = slider;
+            if (isDesktop) registerSlider(slider);
+          }}
+          onSlideChange={(slider) => handleSlideChange(slider.activeIndex)}
+        >
+          <SwiperSlide><HeroSection isActive={activeSection === 'hero'} onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
+          <SwiperSlide><AboutSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
+          <SwiperSlide><WorkSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
+          <SwiperSlide><ServicesSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
+          <SwiperSlide><ContactSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
+        </Swiper>
       </main>
       <MenuOverlay open={menuOpen} items={visibleSectionItems} onClose={closeMenu} onNavigate={navigate} />
     </>

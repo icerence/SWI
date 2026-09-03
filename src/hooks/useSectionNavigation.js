@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollToPlugin, useGSAP);
 
 export default function useSectionNavigation() {
   const [activeSection, setActiveSection] = useState(sectionItems[0].id);
+  const sliderRef = useRef(null);
   const isAnimating = useRef(false);
   const touchStart = useRef(null);
   const reducedMotion = useRef(false);
@@ -26,6 +27,12 @@ export default function useSectionNavigation() {
 
     isAnimating.current = true;
     setActiveSection(sectionId);
+    if (sliderRef.current) {
+      sliderRef.current.slideTo(sectionItems.findIndex((item) => item.id === sectionId));
+      isAnimating.current = false;
+      target.focus({ preventScroll: true });
+      return;
+    }
     gsap.to(window, {
       duration: reducedMotion.current ? 0 : 0.85,
       ease: 'power3.inOut',
@@ -37,6 +44,16 @@ export default function useSectionNavigation() {
     });
   }, []);
 
+  const registerSlider = useCallback((slider) => {
+    sliderRef.current = slider;
+  }, []);
+
+  const handleSlideChange = useCallback((index) => {
+    const item = sectionItems[index];
+    if (!item) return;
+    setActiveSection(item.id);
+  }, []);
+
   const navigateByOffset = useCallback((offset) => {
     const index = sectionItems.findIndex((item) => item.id === activeSection);
     const nextIndex = Math.min(Math.max(index + offset, 0), sectionItems.length - 1);
@@ -45,11 +62,13 @@ export default function useSectionNavigation() {
 
   useEffect(() => {
     const onWheel = (event) => {
+      if (sliderRef.current) return;
       if (Math.abs(event.deltaY) < 20 || isAnimating.current) return;
       event.preventDefault();
       navigateByOffset(event.deltaY > 0 ? 1 : -1);
     };
     const onKeyDown = (event) => {
+      if (sliderRef.current) return;
       const tag = document.activeElement?.tagName;
       if (['INPUT', 'TEXTAREA', 'SELECT'].includes(tag) || document.activeElement?.isContentEditable) return;
       if (['ArrowDown', 'PageDown'].includes(event.key)) { event.preventDefault(); navigateByOffset(1); }
@@ -58,10 +77,12 @@ export default function useSectionNavigation() {
       if (event.key === 'End') { event.preventDefault(); navigate(sectionItems.at(-1).id); }
     };
     const onTouchStart = (event) => {
+      if (sliderRef.current) return;
       const touch = event.changedTouches[0];
       touchStart.current = { x: touch.clientX, y: touch.clientY };
     };
     const onTouchEnd = (event) => {
+      if (sliderRef.current) return;
       if (!touchStart.current || isAnimating.current) return;
       const touch = event.changedTouches[0];
       const deltaX = touch.clientX - touchStart.current.x;
@@ -70,6 +91,7 @@ export default function useSectionNavigation() {
       if (Math.abs(deltaY) > 50 && Math.abs(deltaY) > Math.abs(deltaX)) navigateByOffset(deltaY < 0 ? 1 : -1);
     };
     const onScroll = () => {
+      if (sliderRef.current) return;
       if (isAnimating.current) return;
       const center = window.scrollY + window.innerHeight / 2;
       const nearest = sectionItems.reduce((best, item) => {
@@ -95,5 +117,5 @@ export default function useSectionNavigation() {
     };
   }, [activeSection, navigate, navigateByOffset]);
 
-  return { activeSection, navigate };
+  return { activeSection, navigate, registerSlider, handleSlideChange };
 }
