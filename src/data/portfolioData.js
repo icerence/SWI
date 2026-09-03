@@ -6,6 +6,16 @@ export const sectionItems = [
   { id: 'contact', label: 'Contact' },
 ];
 
+export const heroContent = {
+  title: ['ONE SHOT에서', 'ONE FRAME을,', '섬세하게 다듬다.'],
+  description: '흐림 속에서, 선명한 장면을 찾습니다.',
+  portraitAlt: '송원일 프로필 사진',
+  actions: [
+    { label: '이력서' },
+    { label: '깃허브', variant: 'outlined' },
+  ],
+};
+
 export const profileGroups = [
   {
     title: '인적사항',

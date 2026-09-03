@@ -8,6 +8,8 @@ import ContactSection from './sections/ContactSection.jsx';
 import HeroSection from './sections/HeroSection.jsx';
 import ServicesSection from './sections/ServicesSection.jsx';
 import WorkSection from './sections/WorkSection.jsx';
+import ContactForm from "./ContactForm";
+
 
 function PortfolioApp() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,4 +48,5 @@ export default function App() {
   }
 
   return <PortfolioApp />;
+  return <ContactForm />;
 }
