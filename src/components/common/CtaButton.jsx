@@ -1,6 +1,6 @@
 const variants = {
-  filled: 'border-transparent bg-accent-teal text-text-on-dark',
-  outlined: 'border-accent-teal bg-surface-white text-accent-teal',
+  filled: 'border-border-dark bg-transparent text-text-primary hover:bg-border-dark hover:text-text-on-dark',
+  outlined: 'border-border-dark bg-transparent text-text-primary hover:bg-border-dark hover:text-text-on-dark',
 };
 
 export default function CtaButton({
@@ -11,7 +11,7 @@ export default function CtaButton({
   className = '',
   ariaLabel,
 }) {
-  const styles = `inline-flex h-cta-height w-cta-width items-center justify-center rounded-2xl border-2 px-space-40 py-space-18 text-cta font-semibold ${variants[variant]} ${className}`;
+  const styles = `inline-flex h-[4rem] w-[12.25rem] items-center justify-center rounded-max border-[1.5px] px-space-20 py-0 text-action font-medium transition-all duration-300 ease-out hover:-translate-y-1 ${variants[variant]} ${className}`;
 
   if (href) {
     return (

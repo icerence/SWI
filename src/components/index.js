@@ -6,6 +6,5 @@ export { default as MenuOverlay } from './navigation/MenuOverlay.jsx';
 export { default as ContactTrack } from './portfolio/ContactTrack.jsx';
 export { default as ProfileInfoGroup } from './portfolio/ProfileInfoGroup.jsx';
 export { default as ProjectSlide } from './portfolio/ProjectSlide.jsx';
-export { default as ServiceCard } from './portfolio/ServiceCard.jsx';
 export { default as InlineError } from './states/InlineError.jsx';
 export { default as LoadingIndicator } from './states/LoadingIndicator.jsx';

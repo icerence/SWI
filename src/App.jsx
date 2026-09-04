@@ -6,9 +6,9 @@ import useSectionNavigation from './hooks/useSectionNavigation.js';
 import AboutSection from './sections/AboutSection.jsx';
 import ContactSection from './sections/ContactSection.jsx';
 import HeroSection from './sections/HeroSection.jsx';
-import ServicesSection from './sections/ServicesSection.jsx';
 import WorkSection from './sections/WorkSection.jsx';
 import ContactForm from "./ContactForm";
+import CursorFollower from './components/common/CursorFollower.jsx';
 import { A11y, EffectFade, Keyboard, Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -41,6 +41,7 @@ function PortfolioApp() {
 
   return (
     <>
+      <CursorFollower />
       <a className="skip-link" href="#hero">본문으로 건너뛰기</a>
       <main id="main-content" className="w-full overflow-x-clip bg-surface-neutral" data-active-section={activeSection}>
         <div className="portfolio-fixed-chrome">
@@ -66,7 +67,6 @@ function PortfolioApp() {
           <SwiperSlide><HeroSection isActive={activeSection === 'hero'} onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
           <SwiperSlide><AboutSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
           <SwiperSlide><WorkSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
-          <SwiperSlide><ServicesSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
           <SwiperSlide><ContactSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
         </Swiper>
       </main>

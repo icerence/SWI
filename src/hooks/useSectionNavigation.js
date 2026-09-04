@@ -22,13 +22,14 @@ export default function useSectionNavigation() {
   }, []);
 
   const navigate = useCallback((sectionId) => {
+    const targetIndex = sectionItems.findIndex((item) => item.id === sectionId);
     const target = document.getElementById(sectionId);
-    if (!target || isAnimating.current) return;
+    if (targetIndex < 0 || !target || isAnimating.current) return;
 
     isAnimating.current = true;
     setActiveSection(sectionId);
     if (sliderRef.current) {
-      sliderRef.current.slideTo(sectionItems.findIndex((item) => item.id === sectionId));
+      sliderRef.current.slideTo(targetIndex);
       isAnimating.current = false;
       target.focus({ preventScroll: true });
       return;

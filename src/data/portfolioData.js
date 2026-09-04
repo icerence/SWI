@@ -2,7 +2,6 @@ export const sectionItems = [
   { id: 'hero', label: 'Hero' },
   { id: 'about', label: 'About' },
   { id: 'work', label: 'Selected Work' },
-  { id: 'services', label: 'Services' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -11,8 +10,8 @@ export const heroContent = {
   description: '흐림 속에서, 선명한 장면을 찾습니다.',
   portraitAlt: '송원일 프로필 사진',
   actions: [
-    { label: '이력서' },
-    { label: '깃허브', variant: 'outlined' },
+    { label: '이력서', href: 'https://drive.google.com/file/d/1QDuWmjuGALz-PC1crCm_uRO7FHnTVxU_/view' },
+    { label: '깃허브', variant: 'outlined', href: 'https://github.com/icerence' },
   ],
 };
 
@@ -20,8 +19,8 @@ export const profileGroups = [
   {
     title: '인적사항',
     items: [
-      { term: '이   름 : 송원일' },
-      { term: '나   이 : 1986.08.16' },
+      { term: '이름 : 송원일' },
+      { term: '나이 : 1986.08.16' },
       { term: '거주지 : 서울시 은평구' },
       { term: '휴대폰 : 010.6332.1694' },
       { term: '이메일 : icerence@gmail.com' },
@@ -61,14 +60,7 @@ export const projectMetadata = [
   { label: '페이지 수', value: '메인페이지 1, 서브페이지 8' },
 ];
 
-export const serviceCards = [
-  { number: '01', title: 'FRONTEND\nDEVELOPEMNT', items: ['+ WordPress', '+ Python', '+ PHP & Laravel'] },
-  { number: '02', title: 'BACKEND\nDEVELOPEMNT', items: ['+ WordPress', '+ Python', '+ PHP & Laravel'] },
-  { number: '03', title: 'ANDROID\nDEVELOPEMNT', items: ['+ WordPress', '+ Python', '+ PHP & Laravel'] },
-];
-
 export const visibleSectionItems = sectionItems.filter((item) => {
   if (item.id === 'work') return projectMetadata.length > 0;
-  if (item.id === 'services') return serviceCards.length > 0;
   return true;
 });
