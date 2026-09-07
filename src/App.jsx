@@ -42,7 +42,7 @@ function PortfolioApp() {
     <>
       <CursorFollower />
       <a className="skip-link" href="#hero">본문으로 건너뛰기</a>
-      <main id="main-content" className="w-full overflow-x-clip bg-surface-neutral" data-active-section={activeSection}>
+      <main id="main-content" className="min-h-screen w-full overflow-x-clip" data-active-section={activeSection}>
         <div className="portfolio-fixed-chrome">
           <Header onMenuClick={openMenu} className="absolute left-0 top-0 h-[95px] w-full pr-[50px]" />
           <SectionPagination section={activeSection} items={visibleSectionItems} onNavigate={navigate} className="absolute left-[50px] top-[378px]" />
@@ -51,8 +51,8 @@ function PortfolioApp() {
           className="portfolio-screen-slider"
           modules={[A11y, EffectFade, Keyboard, Mousewheel]}
           effect="fade"
-          fadeEffect={{ crossFade: true }}
-          speed={650}
+          fadeEffect={{ crossFade: false }}
+          speed={0}
           preventInteractionOnTransition={false}
           mousewheel={{ thresholdDelta: 0, thresholdTime: 0, sensitivity: 1 }}
           keyboard={{ enabled: true }}
@@ -63,7 +63,7 @@ function PortfolioApp() {
           }}
           onSlideChange={(slider) => handleSlideChange(slider.activeIndex)}
         >
-          <SwiperSlide><HeroSection isActive={activeSection === 'hero'} onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
+          <SwiperSlide><HeroSection /></SwiperSlide>
           <SwiperSlide><AboutSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
           <SwiperSlide><WorkSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
           <SwiperSlide><ContactSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
