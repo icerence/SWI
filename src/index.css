@@ -220,7 +220,13 @@
 
 .profile-info-group__term {
   display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr);
+  grid-template-columns: 3em minmax(0, 1fr);
+}
+
+.profile-info-group__term dt {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .contact-preview__ticks {
@@ -439,9 +445,30 @@
   background: rgb(129 195 163 / 12%);
 }
 
+@keyframes contact-rec-blink {
+  0%, 44%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgb(229 61 56 / 0%);
+  }
+  45%, 89% {
+    opacity: 0;
+    box-shadow: 0 0 0 4px rgb(229 61 56 / 0%);
+  }
+}
+
+.contact-recording-status:has(+ .contact-button:hover) .contact-rec-indicator,
+.contact-recording-status:has(+ .contact-button:focus-visible) .contact-rec-indicator {
+  animation: contact-rec-blink 1s steps(1, end) infinite 180ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cursor-follower__ring {
     transition: opacity 180ms ease, background-color 180ms ease;
+  }
+
+  .contact-recording-status:has(+ .contact-button:hover) .contact-rec-indicator,
+  .contact-recording-status:has(+ .contact-button:focus-visible) .contact-rec-indicator {
+    animation: none;
   }
 }
 

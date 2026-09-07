@@ -7,7 +7,6 @@ import AboutSection from './sections/AboutSection.jsx';
 import ContactSection from './sections/ContactSection.jsx';
 import HeroSection from './sections/HeroSection.jsx';
 import WorkSection from './sections/WorkSection.jsx';
-import ContactForm from "./ContactForm";
 import CursorFollower from './components/common/CursorFollower.jsx';
 import { A11y, EffectFade, Keyboard, Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -91,5 +90,4 @@ export default function App() {
   }
 
   return <PortfolioApp />;
-  return <ContactForm />;
 }

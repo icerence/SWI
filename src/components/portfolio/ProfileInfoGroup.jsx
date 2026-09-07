@@ -15,12 +15,14 @@ export default function ProfileInfoGroup({ title, items, className = '' }) {
 
               return (
                 <div className={hasValue ? 'profile-info-group__term' : undefined}>
-                  <dt className="text-text-primary">{termLabel}</dt>
+                  <dt className="text-text-primary">
+                    {hasValue ? [...termLabel].map((character, index) => <span key={`${character}-${index}`}>{character}</span>) : termLabel}
+                  </dt>
                   {hasValue && <dd className="m-0 text-text-primary">: {termValue}</dd>}
                 </div>
               );
             })()}
-            {item.description && <dd className="text-text-secondary">{item.description}</dd>}
+            {item.description && <dd className="whitespace-pre-line text-text-secondary">{item.description}</dd>}
           </div>
         ))}
       </dl>

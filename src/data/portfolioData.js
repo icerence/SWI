@@ -37,7 +37,7 @@ export const profileGroups = [
     title: '경력',
     items: [
       { term: '24.07 ~ 25.06', description: '반다이남코코리아 영업부 할인점팀 근무' },
-      { term: '18.11 ~ 24.06', description: '유원커리어센터 (반다이남코코리아) 영업팀 도급사원 근무' },
+      { term: '18.11 ~ 24.06', description: '유원커리어센터 (반다이남코코리아)\n영업팀 도급사원 근무' },
       { term: '17.07 ~ 18.01', description: '자이온전자 영업팀 대리 근무' },
       { term: '14.04 ~ 17.06', description: '그린칩스 영업팀 사원 근무' },
     ],
