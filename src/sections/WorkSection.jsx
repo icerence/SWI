@@ -102,24 +102,39 @@ export default function WorkSection({ onMenuClick, onNavigate }) {
           onSwiper={(slider) => { textSliderRef.current = slider; }}
         >
           <SwiperSlide className="section-reveal-group relative">
-          <article className="absolute left-[49px] top-[46px] w-[500px] bg-surface-white">
+          <article className="pointer-events-auto absolute left-[49px] top-[46px] w-[500px] bg-surface-white">
             <h3 className="mb-space-8 text-project-title font-medium">풀무원 홈페이지<br />리디자인</h3>
             <dl className="flex flex-col gap-space-8 text-body text-text-metadata">
               {projectMetadata.map((item) => <div key={item.label} className="grid grid-cols-[120px_1fr]"><dt>• {item.label}</dt><dd>: {item.value}</dd></div>)}
             </dl>
             <div className="mt-space-8 flex gap-space-8">
-              {['Github', '사이트', '기획서'].map((label) => <button key={label} type="button" className="rounded-2xl border border-border-dark px-space-40 py-space-18 text-body">{label}</button>)}
+              {[
+                { label: 'Github', href: 'https://github.com/icerence/kiwik-project' },
+                { label: '사이트', href: 'https://icerence.github.io/kiwik-project/' },
+                { label: '기획서', href: 'https://www.figma.com/board/tTNn7XY4aHoeSO7p1fTaWX/%ED%82%A4%EC%9C%84-%ED%9A%8C%EC%9D%98%EB%B3%B4%EB%93%9C?node-id=556-408' },
+              ].map(({ label, href }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="rounded-2xl border border-border-dark px-space-40 py-space-18 text-body transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-accent-teal hover:text-text-on-dark">
+                  {label}
+                </a>
+              ))}
             </div>
           </article>
           </SwiperSlide>
           <SwiperSlide className="section-reveal-group relative">
-          <article className="absolute left-[49px] top-[46px] w-[500px] bg-surface-white">
+          <article className="pointer-events-auto absolute left-[49px] top-[46px] w-[500px] bg-surface-white">
             <h3 className="mb-space-8 text-project-title font-medium">오미자 AI 광고<br />영상 제작</h3>
             <dl className="flex flex-col gap-space-8 text-body text-text-metadata">
               {videoProjectMetadata.map((item) => <div key={item.label} className="grid grid-cols-[120px_1fr]"><dt>• {item.label}</dt><dd className="whitespace-pre-line">: {item.value}</dd></div>)}
             </dl>
             <div className="mt-space-8 flex gap-space-8">
-              {['기획서 보기', '영상 보기'].map((label) => <button key={label} type="button" className="whitespace-nowrap rounded-2xl border border-border-dark px-space-40 py-space-18 text-body">{label}</button>)}
+              {[
+                { label: '기획서 보기', href: 'https://www.figma.com/deck/hAdUtLOWQn3edFB42Ap3bL' },
+                { label: '영상 보기', href: 'https://drive.google.com/file/d/14WwOgNU2_gwMJtmd2UyTstSQXn0rL55k/view?usp=sharing' },
+              ].map(({ label, href }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap rounded-2xl border border-border-dark px-space-40 py-space-18 text-body transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-accent-teal hover:text-text-on-dark">
+                  {label}
+                </a>
+              ))}
             </div>
           </article>
           </SwiperSlide>
