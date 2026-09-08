@@ -266,11 +266,6 @@
   display: inline-block;
 }
 
-.work-project-image {
-  transform: scale(0.5);
-  transform-origin: top left;
-}
-
 .section-reveal {
   opacity: 0;
   transform: translateY(var(--section-reveal-distance));
@@ -371,7 +366,8 @@
   transform: translateY(var(--section-reveal-distance));
 }
 
-.swiper-slide-active .section-reveal-group > * {
+.swiper-slide-active .section-reveal-group > *,
+.swiper-slide-active.section-reveal-group > * {
   animation: section-content-reveal var(--section-reveal-duration) var(--section-reveal-ease) forwards;
 }
 

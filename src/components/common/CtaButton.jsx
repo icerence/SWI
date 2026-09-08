@@ -11,7 +11,7 @@ export default function CtaButton({
   className = '',
   ariaLabel,
 }) {
-  const styles = `inline-flex h-[4rem] w-[12.25rem] items-center justify-center rounded-max border-[1.5px] px-space-20 py-0 text-action font-medium transition-all duration-300 ease-out hover:-translate-y-1 ${variants[variant]} ${className}`;
+  const styles = `inline-flex h-[4rem] w-[12.25rem] items-center justify-center rounded-max border-[1.5px] px-space-20 py-0 text-action font-medium ${variants[variant]} ${className}`;
 
   if (href) {
     return (

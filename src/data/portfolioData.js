@@ -60,6 +60,14 @@ export const projectMetadata = [
   { label: '페이지 수', value: '메인페이지 1, 서브페이지 8' },
 ];
 
+export const videoProjectMetadata = [
+  { label: '기술스택', value: 'GoogleFlow, FlowMusic, Premiere, After Effects' },
+  { label: '작업기간', value: '2주' },
+  { label: '본인기여도', value: '100%' },
+  { label: '영상 길이', value: '1분02초' },
+  { label: '트러블슈팅', value: '리드미컬한 랩에 한국어 립싱크를 맞추기위해 한국어를 영어로 발음하는것을 금지하고, 노래의 프레임 단위로 설정해 립싱크를 맞췄습니다.' },
+];
+
 export const visibleSectionItems = sectionItems.filter((item) => {
   if (item.id === 'work') return projectMetadata.length > 0;
   return true;
