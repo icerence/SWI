@@ -22,7 +22,7 @@ export default function ProfileInfoGroup({ title, items, className = '' }) {
                 </div>
               );
             })()}
-            {item.description && <dd className="whitespace-pre-line text-text-secondary">{item.description}</dd>}
+            {item.description && <dd className="whitespace-pre-line text-left text-text-secondary">{item.description}</dd>}
           </div>
         ))}
       </dl>

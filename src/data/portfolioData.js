@@ -29,6 +29,7 @@ export const profileGroups = [
   {
     title: '학력 및 자격',
     items: [
+      { term: '26.04 ~ 26.10', description: 'MBC 아카데미\n챗GPT 생성형 AI를 활용한 반응형 웹콘텐츠\n(영상제작&코딩) 개발기획자 양성과정' },
       { term: '05.03 ~ 13.02', description: '경북대학교 상주캠퍼스 전자공학과 졸업' },
       { term: '취득', description: '1종 보통 운전면허증' },
     ],
