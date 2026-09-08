@@ -46,7 +46,7 @@ export default function Header({ onMenuClick, className = '' }) {
         <span className="ml-space-12 whitespace-nowrap text-[20px] font-medium leading-none">{labels[labelIndex]}</span>
       </div>
       <button
-        className="flex items-center gap-space-8 text-navigation font-regular text-text-primary"
+        className="flex cursor-pointer items-center gap-space-8 text-navigation font-regular text-text-primary"
         type="button"
         aria-label="메뉴 열기"
         onClick={onMenuClick}

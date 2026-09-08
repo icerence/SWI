@@ -37,7 +37,7 @@ export default function ContactSection() {
             {tracks.map(([label, value], index) => <ContactTrack key={label} label={label} value={value} expandable={index === 3} />)}
           </div>
           <div className="contact-recording-status relative mt-[40px] h-[52px] border-t border-border-default"><span className="contact-rec-indicator absolute left-[8px] top-[19px] size-space-16 rounded-max bg-accent-red" aria-hidden="true" /><span className="absolute left-[32px] top-[14px] text-label font-medium">REC</span><span className="absolute right-[40px] top-[14px] text-body">00:00:00:00  /  00:02:30:00</span></div>
-          <button className="contact-button mt-[8px] h-[58px] w-full rounded-max border-[1.5px] border-accent-teal text-action font-medium transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-accent-teal hover:text-text-on-dark" type="button" onClick={() => setIsFormOpen(true)}>CONTACT</button>
+          <button className="contact-button mt-[8px] h-[58px] w-full cursor-pointer rounded-max border-[1.5px] border-accent-teal text-action font-medium transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-accent-teal hover:text-text-on-dark" type="button" onClick={() => setIsFormOpen(true)}>CONTACT</button>
         </div>
       </div>
       {isFormOpen && <ContactForm onClose={() => setIsFormOpen(false)} />}

@@ -123,6 +123,10 @@
     outline-offset: 4px;
   }
 
+  :where(a, button, [role="button"]) {
+    cursor: pointer;
+  }
+
   html:has([role="dialog"][aria-modal="true"]) {
     overflow: hidden;
   }

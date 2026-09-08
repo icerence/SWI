@@ -4,7 +4,7 @@ import { heroContent } from '../data/portfolioData.js';
 export default function HeroSection() {
   return (
     <section id="hero" tabIndex="-1" className="portfolio-section relative h-[1080px] overflow-hidden bg-surface-warm-beige outline-none" aria-labelledby="hero-title">
-      <img className="absolute left-[149px] top-[12px] h-[1121px] w-[747px] object-cover" src="/assets/images/hero-portrait.png" alt={heroContent.portraitAlt} fetchPriority="high" />
+      <img className="absolute left-[149px] top-[36px] h-[1121px] w-[747px] object-cover" src="/assets/images/hero-portrait.png" alt={heroContent.portraitAlt} fetchPriority="high" />
       <h1 id="hero-title" className="absolute left-[945px] top-[144px] h-[490px] w-[810px] text-center text-hero font-semibold">
         <span className="section-reveal section-reveal--delay-1 absolute left-0 top-0 w-full whitespace-nowrap text-text-primary">{heroContent.title[0]}</span>
         <span className="section-reveal section-reveal--delay-2 absolute left-0 top-[137px] w-full whitespace-nowrap text-surface-warm-beige [text-shadow:-1px_-1px_0_#121212,1px_-1px_0_#121212,-1px_1px_0_#121212,1px_1px_0_#121212]">{heroContent.title[1]}</span>
