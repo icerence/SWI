@@ -65,7 +65,7 @@ function PortfolioApp() {
         >
           <SwiperSlide><HeroSection /></SwiperSlide>
           <SwiperSlide><AboutSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
-          <SwiperSlide><WorkSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
+          <SwiperSlide><WorkSection activeSection={activeSection} onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
           <SwiperSlide><ContactSection onMenuClick={openMenu} onNavigate={navigate} /></SwiperSlide>
         </Swiper>
       </main>

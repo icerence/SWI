@@ -53,7 +53,12 @@ export const profileGroups = [
 ];
 
 export const projectMetadata = [
-  { label: '기술 스택', value: 'HTML, CSS, JavaScript' },
+  {
+    label: '기술 스택',
+    value: 'HTML, CSS, JavaScript',
+    link: 'https://skiper-ui.com/v1/skiper17',
+    linkLabel: 'Skiper UI',
+  },
   { label: '배포 매체', value: 'Desktop, Tablet, Mobile' },
   { label: '작업 기간', value: '4주' },
   { label: '본인 기여도', value: '팀장 (20%)' },
@@ -62,7 +67,12 @@ export const projectMetadata = [
 ];
 
 export const videoProjectMetadata = [
-  { label: '기술스택', value: 'GoogleFlow, FlowMusic, Premiere, After Effects' },
+  {
+    label: '기술스택',
+    value: 'GoogleFlow, FlowMusic, Premiere, After Effects',
+    link: 'https://skiper-ui.com/v1/skiper17',
+    linkLabel: 'Skiper UI',
+  },
   { label: '작업기간', value: '2주' },
   { label: '본인기여도', value: '100%' },
   { label: '영상 길이', value: '1분02초' },
